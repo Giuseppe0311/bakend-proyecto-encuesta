@@ -127,7 +127,7 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'lolo',
+        'NAME': 'PRUEBAPROYECTO',
         'USER': 'sa',
         'PASSWORD': '1234',
         'HOST': 'PCMASTER\SQLEXPRESS',
