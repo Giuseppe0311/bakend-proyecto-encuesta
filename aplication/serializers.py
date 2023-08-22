@@ -68,11 +68,18 @@ class DatosPersonalesSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    # Campo para proporcionar el ID del perfil al crear el usuario
+    perfil_id = serializers.IntegerField(write_only=True)
+
     class Meta:
         model = AuthUser
-        fields = ('username', 'password')
+        fields = ('username', 'password', 'perfil_id')
 
     def create(self, validated_data):
+        # Extraemos el valor del ID del perfil
+        user = AuthUser(**validated_data)
         validated_data['password'] = make_password(
             validated_data.get('password'))
+        perfil_id = validated_data.get('perfil_id')
+
         return super().create(validated_data)
